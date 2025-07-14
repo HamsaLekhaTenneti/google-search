@@ -1,0 +1,59 @@
+# ========== MAVEN ==========
+
+# Maven target directory (compiled classes, JARs, reports, etc.)
+/target/
+
+# Local Maven repository (if you override default location)
+/.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+
+# ========== ECLIPSE ==========
+
+# Eclipse project files and settings
+.classpath
+.project
+.settings/
+
+# ========== IDEs (optional) ==========
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# ========== LOGS & REPORTS ==========
+
+# Logs
+*.log
+
+# Test reports (TestNG, Allure, etc.)
+/test-output/
+/surefire-reports/
+/allure-results/
+/allure-report/
+
+# ========== DRIVERS ==========
+
+# WebDriver binaries (if manually added)
+/drivers/
+chromedriver
+geckodriver
+
+# ========== OS-SPECIFIC ==========
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# ========== OTHER ==========
+
+# Environment-specific config
+.env
+*.local
+
+# Node modules (if using npm tools)
+node_modules/
