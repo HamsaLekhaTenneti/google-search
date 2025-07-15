@@ -14,9 +14,9 @@ public class DriverManager {
     		System.setProperty("webdriver.chrome.driver","/Users/raghuram36/Downloads/chromedriver-mac-arm64/chromedriver");
     		
     		ChromeOptions options = new ChromeOptions();
-    	/*	options.addArguments("start-maximized");
+    	 	options.addArguments("start-maximized");
     		options.addArguments("disable-infobars");
-    		options.addArguments("--disable-extensions");*/
+    		options.addArguments("--disable-extensions");
     		options.addArguments("--disable-blink-features=AutomationControlled");
     		
     		driver = new ChromeDriver(options);

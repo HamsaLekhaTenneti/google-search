@@ -1,6 +1,4 @@
 package com.example.tests;
-
-
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -31,25 +29,24 @@ public class GoogleSearch {
     @Test
     public void testGoogleSearch() {
         try {
-            // Search for "sdlc"
-            WebElement sdlc = driver.findElement(By.xpath("//textarea[@id='APjFqb']"));
+
+        	WebElement sdlc = driver.findElement(By.xpath("//textarea[@id='APjFqb']"));
             sdlc.sendKeys("sdlc", Keys.ENTER);
 
-            // Wait for search results
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div#search a h3")));
 
-            // Find all <h3> elements inside anchor tags
+        
             List<WebElement> results = driver.findElements(By.cssSelector("div#search a h3"));
 
             if (!results.isEmpty()) {
                 WebElement h3Element = results.get(0);
-                WebElement anchor = h3Element.findElement(By.xpath("ancestor::a")); // Get parent anchor
+                WebElement anchor = h3Element.findElement(By.xpath("//div[@id='search']//a[h3[contains(text(),'SDLC')]]")); 
                 anchor.click();
 
-                // ✅ Wait for the new page to load
+               
                 wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
 
-                // Get page source and check for keyword
+               
                 String pageSource = driver.getPageSource().toLowerCase();
 
                 if (pageSource.contains("software development lifecycle")) {

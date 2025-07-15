@@ -1,5 +1,4 @@
 package com.example.tests.steps;
-
 import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
@@ -12,41 +11,39 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-import com.example.tests.pages.GoogleHomePage;
 import com.example.utilities.DriverManager;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.Step;
 
-
 public class GoogleSteps extends PageObject{
 
-    GoogleHomePage googleHomePage;
     WebDriver driver;
     WebDriverWait wait;
 
     @Step("User opens Google")
-    public void open_google() {
+    public void openGooglePage() {
     	driver = DriverManager.getDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     	driver.get("https://www.google.com");
     }
     
-    @Step("Search for keyword: {0}")
-    public void search_for(String keyword) {
+    
+    @Step("Search for keyword: SDLC")
+    public void searchFor(String keyword) {
     	WebElement sdlc = driver.findElement(By.xpath("//textarea[@id='APjFqb']"));
         sdlc.sendKeys("sdlc", Keys.ENTER);
     }
     
-    @Step
-    public void click_first_result() {
+    @Step("click page ")
+    public void clickFirstResult() {
     	try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div#search a h3")));
             List<WebElement> results = driver.findElements(By.cssSelector("div#search a h3"));
 
             if (!results.isEmpty()) {
-                WebElement h3Element = results.get(0);
-                WebElement anchor = h3Element.findElement(By.xpath("ancestor::a"));
+            	WebElement h3Element = results.get(0);
+                WebElement anchor = h3Element.findElement(By.xpath("//div[@id='search']//a[h3[contains(text(),'SDLC')]]")); 
                 anchor.click();
                 wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
             } else {
@@ -61,20 +58,20 @@ public class GoogleSteps extends PageObject{
         }
     }
          
-          @Step
-          public void verify_sdlc_content() {
-        	  String pageSource = driver.getPageSource().toLowerCase();
-              if (pageSource.contains("software development lifecycle")) {
-                  System.out.println("Redirected to SDLC-related page.");
-                  System.out.println("True");
-              } else {
-                  System.out.println(" Content not found.");
-                  System.out.println("False");
-              }
+      @Step("verify")
+      public void verifySdlc() {
+    	  String pageSource = driver.getPageSource().toLowerCase();
+          if (pageSource.contains("software development lifecycle")) {
+              System.out.println("Redirected to SDLC-related page.");
+              System.out.println("True");
+          } else {
+              System.out.println(" Content not found.");
+              System.out.println("False");
           }
-          
-          @AfterEach
-          public void tearDown() {
-              getDriver().quit();  // Closes the browser
-          }
+      }
+ 
+      @AfterEach
+      public void closeBrowser() {
+          driver.quit();
+      }
 }

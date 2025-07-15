@@ -20,12 +20,12 @@ public class GoogleSearch {
     GoogleSteps googleSteps;
     
     @Test
-    public void should_open_google_and_search_sdlc() {
-        googleSteps.open_google();
-        googleSteps.search_for("sdlc");
-        googleSteps.click_first_result();
-        googleSteps.verify_sdlc_content();
-        googleSteps.tearDown();
+    public void shouldGoogleSDLC() {
+        googleSteps.openGooglePage();
+        googleSteps.searchFor("sdlc");
+        googleSteps.clickFirstResult();
+        googleSteps.verifySdlc();
+        googleSteps.closeBrowser();
         
     }
     

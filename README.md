@@ -21,8 +21,17 @@
 3. Run files -> Run as -> TestNG Test
 
 
-###Captcha handling 
+### Captcha handling 
 
 Get reference from stack over flow
 
-https://stackoverflow.com/questions/28879950/how-to-avoid-google-search-detect-selenium-webdriver-as-unusual-behaviour
+	https://stackoverflow.com/questions/28879950/how-to-avoid-google-search-detect-selenium-webdriver-as-unusual-behaviour
+
+
+### Serenity addition to project
+
+1. Serenity is one of the automation framework ,it built on top of selenium tool it can supports BDD framework
+2. By using BDD 
+3. Update function names with right convention
+4. Write function definitions
+5. Use Assert
